@@ -19,8 +19,8 @@ Note that their routing table may now be missing an entry for a default gateway.
 They will have to add this back in based on information they collected
 before tanking their system. For example: on my virtual machien I would run
 "ip route add default via 10.0.2.2"
-
 """
+
 command = "ip link set dev {iface} {status}"
 iface = util.get_default_iface_name_linux()
 
