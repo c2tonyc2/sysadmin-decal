@@ -7,7 +7,7 @@ DefaultRouting = namedtuple('DefaultRouting', ['iface', 'gateway', 'mask'])
 def get_default_routing_information():
     with open(ROUTE) as route_file:
         for line in route_file:
-            fields = line.strip.split()
+            fields = line.strip().split()
             if fields[1] != '00000000' or not int(fields[3], 16) & 2:
                 continue
 
