@@ -5,7 +5,7 @@ import subprocess
 """
 Scenario Overview:
 Take down the interface that corresponds to their default gateway in the
-routing table.  This means they will essentially have no network access 
+routing table.  This means they will essentially have no network access
 assuming they are relying on this one interface.
 
 Triage:
@@ -22,8 +22,7 @@ before tanking their system. For example: on my virtual machien I would run
 """
 
 command = "ip link set dev {iface} {status}"
-iface = util.get_default_iface_name_linux()
+iface = util.get_default_routing_information()['iface']
 
 args = split(command.format(iface=iface, status="down"))
 subprocess.run(args)
-

@@ -16,14 +16,13 @@ Solution:
 Delete the malicious entry and re add a entry to the proper default gateway i.e.
 "ip route add default via 10.0.2.2"
 """
-
-default_gateway = util.get_default_gateway_linux()
-print(default_gateway)
+# Memorize their current default gateway
+routing_info = util.get_default_routing_information()
 
 # Kill their default gateway routing rule
-# command = "ip route delete default"
-# subprocess.run(split(command))
-#
-# # Add a dummy entry
-# command = "ip route add default via "
-# iface = util.get_default_iface_name_linux()
+command = "ip route delete default"
+subprocess.run(split(command))
+
+# Add a dummy entry
+command = "ip route add default via "
+iface = util.get_default_iface_name_linux()
