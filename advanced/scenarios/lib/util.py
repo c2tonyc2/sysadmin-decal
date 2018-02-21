@@ -1,38 +1,39 @@
-import socket, struct
+import socket, struct, fcntl
 from collections import namedtuple
 ROUTE = "/proc/net/route"
 
-DefaultRouting = namedtuple('DefaultRouting', ['iface', 'gateway', 'mask'])
+RoutingEntry = namedtuple(
+    'RoutingEntry', 
+    ['iface', 'gateway', 'mask', 'dst', 'flags']
+)
+
+def is_default_gateway(routing_entry):
+    return routing_entry.dst  == '00000000' and int(routing_entry.flags, 16) & 2
 
 def get_default_routing_information():
+    routing_entries = []
     with open(ROUTE) as route_file:
         for line in route_file:
             fields = line.strip().split()
-            if fields[1] != '00000000' or not int(fields[3], 16) & 2:
+            try:
+                routing_entries.append(RoutingEntry(
+                    iface=fields[0],
+                    gateway=hex2address(fields[2]),
+                    mask=hex2address(fields[7]),
+                    dst=fields[1],
+                    flags=fields[3]
+                ))
+            except ValueError:
                 continue
+    return routing_entries
 
-            return DefaultRouting(
-                iface=fields[0],
-                gateway=socket.inet_ntoa(struct.pack("<L", int(fields[2], 16))),
-                mask=socket.inet_ntoa(struct.pack("<L", int(fields[7], 16)))
-            )
+def get_iface_ip_address(iface):
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    return socket.inet_ntoa(fcntl.ioctl(
+        s.fileno(),
+        0x8915,  # SIOCGIFADDR
+        struct.pack('256s', bytes(iface[:15], 'utf-8'))
+    )[20:24])
 
-# def get_default_iface_name_linux():
-#     with open(ROUTE) as f:
-#         for line in f.readlines():
-#             try:
-#                 iface, dest, _, flags, _, _, _, _, _, _, _, =  line.strip().split()
-#                 if dest != '00000000' or not int(flags, 16) & 2:
-#                     continue
-#                 return iface
-#             except:
-#                 continue
-#
-# def get_default_gateway_linux():
-#     with open(ROUTE) as f:
-#         for line in f:
-#             fields = line.strip().split()
-#             if fields[1] != '00000000' or not int(fields[3], 16) & 2:
-#                 continue
-#
-#             return socket.inet_ntoa(struct.pack("<L", int(fields[2], 16)))
+def hex2address(val):
+    return socket.inet_ntoa(struct.pack("<L", int(val, 16)))

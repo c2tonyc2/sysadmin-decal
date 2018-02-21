@@ -17,24 +17,20 @@ Delete the malicious entry and re add a entry to the proper default gateway i.e.
 "ip route add default via 10.0.2.2"
 """
 # Memorize their current default gateway
-routing_info = util.get_default_routing_information()
-
-# Construct new bogus gateway
-gateway_bytes = routing_info.gateway.split(".")
-
-last_byte = int(gateway_bytes[-1])
-if last_byte < 250:
-    last_byte += 5
-else:
-    last_byte -= 5
-gateway_bytes[-1] = str(last_byte)
- 
-new_gateway = ".".join(gateway_bytes)
+routing_entries = util.get_default_routing_information()
+default_entry = next((e for e in routing_entries if util.is_default_gateway(e)), None)
+default_iface_entry = next(
+    (e for e in routing_entries if not util.is_default_gateway(e) and e.iface == default_entry.iface), 
+    None
+)
 
 # Kill their default gateway routing rule
 command = "ip route delete default"
 subprocess.run(split(command))
 
 # Add a dummy entry
-command = "ip route add default via {gateway}".format(gateway=new_gateway)
+command = "ip route add default via {gateway}".format(
+    gateway=util.get_iface_ip_address(default_iface_entry.iface)
+)
+
 subprocess.run(split(command))
