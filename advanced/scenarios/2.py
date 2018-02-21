@@ -4,25 +4,20 @@ import subprocess
 
 """
 Scenario Overview:
-Place a bad entry in their routing table for the default gateway and route
-traffic to a black hole.
+Poison the user's arp cache redirecting traffic intended for the default gateway to instead go to an invalid MAC.
 
 Triage:
-They should be using "ip route" or a similar command to display their routing
-table and from information they gathered before running the scenarios, they
-should deduce that the entry for the default gateway is bad.
+The student should identify the issue by inspecting the machine's arp table via a tool like "arp".  They should note that the MAC that corresponds to their default gateway is set to an invalid MAC.
 
 Solution:
-Delete the malicious entry and re add a entry to the proper default gateway i.e.
-"ip route add default via 10.0.2.2"
+Delete the malicious entry and re add a proper entry to the gateway's MAC address.  
+They should have taken note of proper configuration info prior to tanking their system.
+The entry should be added using a command like "sudo arp -s <ip_address <MAC_address>" 
+Conflicts with existing entries may exist, in that case, the student should remove conflicting entries with "sudo arp -d <ip_address>"
 """
 # Memorize their current default gateway
 routing_entries = util.get_default_routing_information()
 default_entry = next((e for e in routing_entries if util.is_default_gateway(e)), None)
-default_iface_entry = next(
-    (e for e in routing_entries if not util.is_default_gateway(e) and e.iface == default_entry.iface), 
-    None
-)
 
 # Kill their default gateway routing rule
 command = "ip route delete default"
