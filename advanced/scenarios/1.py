@@ -22,7 +22,11 @@ before tanking their system. For example: on my virtual machien I would run
 """
 
 command = "ip link set dev {iface} {status}"
-iface = util.get_default_routing_information().iface
+routing_entries = util.get_default_routing_information()
+default_entry = next(
+    (e for e in routing_entries if util.is_default_gateway(e)),
+    None
+)
 
-args = split(command.format(iface=iface, status="down"))
+args = split(command.format(iface=default_entry.iface, status="down"))
 subprocess.run(args)

@@ -18,6 +18,10 @@ Conflicts with existing entries may exist, in that case, the student should remo
 # Memorize their current default gateway
 routing_entries = util.get_default_routing_information()
 default_entry = next((e for e in routing_entries if util.is_default_gateway(e)), None)
+default_iface_entry = next(
+    (e for e in routing_entries if not util.is_default_gateway(e) and e.iface == default_entry.iface),
+    None
+)
 
 # Kill their default gateway routing rule
 command = "ip route delete default"
