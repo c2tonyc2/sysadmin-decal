@@ -17,7 +17,7 @@ Solution:
 Bring the interace back up with "ip link set dev <iface> up"
 Note that their routing table may now be missing an entry for a default gateway.
 They will have to add this back in based on information they collected
-before tanking their system. For example: on my virtual machien I would run
+before tanking their system. For example: on my virtual machine I would run
 "ip route add default via 10.0.2.2"
 """
 
