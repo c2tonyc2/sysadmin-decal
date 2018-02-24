@@ -13,10 +13,32 @@ They should cross validate this result -- one good way to do this is to have the
 Solution:
 Since the current DNS server has a malicious record there are multiple ways to solve this issue.  One can place a static entry in /etc/hosts if the IP of the destination in question doesn't change.  Additionally, you can modify the default DNS server to be something more 'trustworthy', Google DNS at 8.8.8.8 for example.  This can be done by adding an entry in /etc/resolv.conf, mind the order of the entry since this affects its priority.
 """
-HOSTS_FILE = "/etc/hosts"
-ENTRY = "72.66.115.13 google.com\n"
+RESOLV_FILE = "/etc/resolv.conf"
+ENTRY = "nameserver {local_ns}\n"
+DNSMASQ_HOST_FILE = "/etc/dnsmasq.hosts"
+DNSMASQ_CONFIG_FILE = "/etc/dnsmasq.conf"
 
-# Edit their hosts file to contain a bad entry
-with open(HOSTS_FILE, "a") as host_file:
-    host_file.write(ENTRY)
+routing_entries = util.get_default_routing_information()
+default_entry = next((e for e in routing_entries if util.is_default_gateway(e)), None)
+default_iface_entry = next(
+    (e for e in routing_entries if not util.is_default_gateway(e) and e.iface == default_entry.iface),
+    None
+)
+
+ENTRY = ENTRY.format(local_ns=util.get_iface_ip_address(default_iface_entry.iface))
+
+# Write dnsmasq config file
+with open(DNSMASQ_HOST_FILE, "w"):
+    
+
+
+# Restart dnsmasq server
+command = "killall -9 dnsmasq"
+subprocess.run(split(command))
+
+# Add a line to resolv.conf to prioritize the local nameserver when executing DNS queries
+with open(RESOLV_FILE, "r+") as resolv_file:
+    original = resolv_file.read()
+    file.seek(0, 0)
+    resolv_file.write(ENTRY + original)
 
