@@ -297,11 +297,11 @@ A very powerful tool that can be used for just about anything involving TCP or U
 [checkoff]: https://goo.gl/forms/j17WWRXOIvwabPUl2
 [files]: https://decal.ocf.berkeley.edu/static/b5/
 
-**Some of these commands may require sudo, so please try this on a machine where you have sudo privilege. Note: if any of these commands fail, they may not be on your machine's path.  This might be due to your path not including `/usr/sbin` to fix this issue simply run `export PATH=$PATH:/usr/sbin`.  That command adds the `usr/sbin` file to your systems PATH so your machine knows to look there for commands like `arp`.
+**Some of these commands may require sudo, so please try this on a machine where you have sudo privilege. Note: if any of these commands fail, they may not be on your machine's path.  This might be due to your path not including `/usr/sbin` to fix this issue simply run `export PATH=$PATH:/usr/sbin`.  That command adds the `usr/sbin` file to your systems PATH so your machine knows to look there for commands like `arp`.**
 
-Additionally, These questions can also be found on the lab checkoff form located [here][checkoff] so feel free to read them there instead.
+**Additionally, These questions can also be found on the lab checkoff form located [here][checkoff] so feel free to read them there instead.**
 
-Furthermore, the supplementary files for this lab can be found [here][files]. You will need these files to complete some exercises.**
+**Furthermore, the supplementary files for this lab can be found [here][files]. You will need these files to complete some exercises.**
 
 ## Web Browsing Example
 Let's take a look at all these concepts applied to something we are very familiar with - web browsing.
