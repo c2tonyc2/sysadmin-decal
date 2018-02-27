@@ -294,6 +294,10 @@ A very powerful tool that can be used for just about anything involving TCP or U
 
 # Questions
 
+[checkoff]: https://goo.gl/forms/j17WWRXOIvwabPUl2
+
+**These questions can also be found on the lab checkoff form located [here][checkoff] so feel free to read them there instead.**
+
 ## Web Browsing Example
 Let's take a look at all these concepts applied to something we are very familiar with - web browsing.
 
@@ -347,7 +351,7 @@ Please run `git clone https://github.com/c2tonyc2/sysadmin-decal.git` before sta
 6. Launch `ninja_port.py`, by running `python3 ninja_port.py` and then locate the port where the ninja is hiding and send it a `found you` message.  What does it say back, how did you find out what port is was hiding on?
 7. Launch `ninja_port.py` again and this time use `tcpdump` to monitor the loopback interface. What sort of packets arrive? Hint: Take a look at the `-X` flag for tcpdump
 8. What IP address does `google.com` resolve to?
-9. What types of records do you get when you do a DNS lookup of `facebook.com`, how about `www.facebook.com`?
+9. What types of records do you get when you do a DNS lookup of `facebook.com`, how about `ww.facebook.com`?
 10. What command would you run to show the interfaces on your machine? Which one is the loopback interface?  Which interface would traffic to the internet go through?
 11. How many router hops away is berkeley.edu, stanford.edu, and duke.edu? Is there a difference, and why?
 12. How many distinct hosts can `127.0.0.0/8` contain?
