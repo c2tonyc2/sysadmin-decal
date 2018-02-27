@@ -292,7 +292,7 @@ A very powerful tool that can be used for just about anything involving TCP or U
 [curl vs wget]: https://daniel.haxx.se/docs/curl-vs-wget.html
 
 
-# Questions
+# Exercises
 
 [checkoff]: https://goo.gl/forms/j17WWRXOIvwabPUl2
 [files]: https://decal.ocf.berkeley.edu/static/b5/
@@ -303,7 +303,7 @@ A very powerful tool that can be used for just about anything involving TCP or U
 
 **Furthermore, the supplementary files for this lab can be found [here][files]. You will need these files to complete some exercises.**
 
-## Web Browsing Example
+## Once Upon a Network
 Let's take a look at all these concepts applied to something we are very familiar with - web browsing.
 
 Try filling the blanks with the proper terms.
@@ -330,6 +330,8 @@ You boot up your desktop complete with its own **<0>** that you plug your ethern
 
 **ARP Table**
 
+## Networks are like Ogres
+
 Please order the headers of each layer properly for a packet traveling on the physical layer
 **<0>** || **<1>** || **<2>** || **<3>** || Data
 
@@ -343,7 +345,7 @@ Please order the headers of each layer properly for a packet traveling on the ph
 
 **TCP**
 
-## Quiz Me Up
+## Riddle Me This
 Please run `git clone https://github.com/c2tonyc2/sysadmin-decal.git` before starting this section. This repository has a copy of the lab markdown file and other supplemental materials under `sysadmin-decal/networking_101`
 
 1. Does HTTP use TCP or UDP and why? How about Discord and Skype, why?
@@ -351,11 +353,13 @@ Please run `git clone https://github.com/c2tonyc2/sysadmin-decal.git` before sta
 3. Is the IP address from the above question a public or private one? Based on whether it's public or private, could someone in San Francisco ping its IP address over the internet?
 4. What does your machine's routing table look like?
 5. What does your machine's arp table look like? Can you print out the arp table so that it displays IP addresses?
-6. Launch `ninja_port.py`, by running `python3 ninja_port.py` and then locate the port where the ninja is hiding and send it a `found you` message.  What does it say back, how did you find out what port is was hiding on?
-7. Launch `ninja_port.py` again and this time use `tcpdump` to monitor the loopback interface. What sort of packets arrive? Hint: Take a look at the `-X` flag for tcpdump
-8. What IP address does `google.com` resolve to?
-9. What types of records do you get when you do a DNS lookup of `facebook.com`, how about `ww.facebook.com`?
-10. What command would you run to show the interfaces on your machine? Which one is the loopback interface?  Which interface would traffic to the internet go through?
-11. How many router hops away is berkeley.edu, stanford.edu, and duke.edu? Is there a difference, and why?
-12. How many distinct hosts can `127.0.0.0/8` contain?
-13. What ports do DNS, SSH, and DHCP use?
+6. What IP address does `google.com` resolve to?
+7. What types of records do you get when you do a DNS lookup of `facebook.com`, how about `ww.facebook.com`?
+8. What command would you run to show the interfaces on your machine? Which one is the loopback interface?  Which interface would traffic to the internet go through?
+9. How many router hops away is berkeley.edu, stanford.edu, and duke.edu? Is there a difference, and why?
+10. How many distinct hosts can `127.0.0.0/8` contain?
+11. What ports do DNS, SSH, and DHCP use?
+
+## Net Ninjas
+1. Launch `ninja_port.py`, by running `python3 ninja_port.py` and then locate the port where the ninja is hiding and send it a `found you` message.  What does it say back, how did you find out what port is was hiding on?
+2. Launch `ninja_port.py` again and this time use `tcpdump` to monitor the loopback interface. What sort of packets arrive? Hint: Take a look at the `-X` flag for tcpdump
