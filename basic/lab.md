@@ -295,8 +295,13 @@ A very powerful tool that can be used for just about anything involving TCP or U
 # Questions
 
 [checkoff]: https://goo.gl/forms/j17WWRXOIvwabPUl2
+[files]: https://decal.ocf.berkeley.edu/static/b5/
 
-**These questions can also be found on the lab checkoff form located [here][checkoff] so feel free to read them there instead.**
+**Some of these commands may require sudo, so please try this on a machine where you have sudo privilege. Note: if any of these commands fail, they may not be on your machine's path.  This might be due to your path not including `/usr/sbin` to fix this issue simply run `export PATH=$PATH:/usr/sbin`.  That command adds the `usr/sbin` file to your systems PATH so your machine knows to look there for commands like `arp`.
+
+Additionally, These questions can also be found on the lab checkoff form located [here][checkoff] so feel free to read them there instead.
+
+Furthermore, the supplementary files for this lab can be found [here][files]. You will need these files to complete some exercises.**
 
 ## Web Browsing Example
 Let's take a look at all these concepts applied to something we are very familiar with - web browsing.
@@ -340,8 +345,6 @@ Please order the headers of each layer properly for a packet traveling on the ph
 
 ## Quiz Me Up
 Please run `git clone https://github.com/c2tonyc2/sysadmin-decal.git` before starting this section. This repository has a copy of the lab markdown file and other supplemental materials under `sysadmin-decal/networking_101`
-
-**Some of these commands may require sudo, so please try this on your class machines. Note: if any of these commands fail, they may not be on your machine's path.  This might be due to your path not including `/usr/sbin` to fix this issue simply run `export PATH=$PATH:/usr/sbin`.  That command adds the `usr/sbin` file to your systems PATH so your machine knows to look there for commands like `arp`.**
 
 1. Does HTTP use TCP or UDP and why? How about Discord and Skype, why?
 2. What is the MAC and IP address of one if your machine's interfaces, not including the loopback interface.
