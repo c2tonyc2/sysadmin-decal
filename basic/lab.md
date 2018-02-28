@@ -244,7 +244,7 @@ A simple and straightforward command that can display information about a host, 
     Moreover ping also provides metrics for Round Trip Time (RTT) and packet loss.  Round trip time is defined as the time it takes for a response to arrive after sending the ping packet.  These can prove to be very useful statistics.
 
 3. `traceroute`
-Traceroute sends packets Time to Live (TTL) equal to the number of hops. Routers decreases the value of TTL of an incoming packet and if it sees an incoming packet with TTL = 0 then drops it, otherwise it decreases the value and sends it further. At the same time it sends diagnosing information to the source about router's identity.
+Traceroute sends packets Time to Live (TTL) equal to the number of hops. Routers decrease the value of TTL for incoming packets. If a packet's TTL = 0 then the router drops it and may send back diagnostic information to the source about the router's identity. Otherwise the router continues forwarding the packet.
 
     Traceroute provides a detailed view of the routers that a packet traverses while on its way to a destination.
 
@@ -298,13 +298,13 @@ cURL does as its name suggests, and allows you to see the contents at certain UR
 # Exercises
 
 [checkoff]: https://goo.gl/forms/j17WWRXOIvwabPUl2
-[files]: https://github.com/0xcf/decal-labs
+[file]: https://github.com/0xcf/decal-labs/blob/master/b5/ninja_port.py
 
 **Please complete this lab on your student VMs**
 
-**Additionally, These questions can also be found on the lab checkoff form located [here][checkoff] so feel free to read them there instead.**
+**Additionally, these questions can also be found on the lab checkoff form located [here][checkoff] so feel free to read them there instead.**
 
-**Furthermore, the supplementary files for this lab can be found [here][files]. You can get a local copy of this repo by running `git clone git@github.com:0xcf/decal-labs.git`. Then go into the corresponding directory for this lab `cd decal-labs/b5`.**
+**Furthermore, the supplementary file for this lab can be found [here][file].**
 
 ## Once Upon a Network
 Let's take a look at all these concepts applied to something we are very familiar with - web browsing.
