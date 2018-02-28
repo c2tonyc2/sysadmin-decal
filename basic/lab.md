@@ -305,7 +305,7 @@ cURL does as its name suggests, and allows you to see the contents at certain UR
 [checkoff]: https://goo.gl/forms/j17WWRXOIvwabPUl2
 [files]: https://github.com/0xcf/decal-labs
 
-**Some of these commands may require sudo, so please try this on a machine where you have sudo privilege. Note: if any of these commands fail, they may not be on your machine's path.  This might be due to your path not including `/usr/sbin` to fix this issue simply run `export PATH=$PATH:/usr/sbin`.  That command adds the `usr/sbin` file to your systems PATH so your machine knows to look there for commands like `arp`.**
+**Please complete this lab on your student VMs**
 
 **Additionally, These questions can also be found on the lab checkoff form located [here][checkoff] so feel free to read them there instead.**
 
