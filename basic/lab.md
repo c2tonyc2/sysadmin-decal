@@ -236,14 +236,17 @@ Note that when it comes to real world networks there are even more factors to co
 So take the output of these tools with a grain of salt, they a means of narrowing down issues. It is important not to misinterpret outputs or jump to conclusions too quickly.
 
 1. `hostname`
+
 A simple and straightforward command that can display information about a host, IP addresses, FQDN, and etc.  Make sure to also check out `host`, which is a similar command that provides more detailed information by doing a lookup on a given name.
 
 2. `ping`
- Another simple command, most of the time you'll be using ping as a first step towards testing connectivity. If ping can't reach a host then there is likely an issue with connectivity. The ping tool does this by sending out ICMP messages to the host expecting a response. (More on the protocol [here][ICMP])
+
+Another simple command, most of the time you'll be using ping as a first step towards testing connectivity. If ping can't reach a host then there is likely an issue with connectivity. The ping tool does this by sending out ICMP messages to the host expecting a response. (More on the protocol [here][ICMP])
 
     Moreover ping also provides metrics for Round Trip Time (RTT) and packet loss.  Round trip time is defined as the time it takes for a response to arrive after sending the ping packet.  These can prove to be very useful statistics.
 
 3. `traceroute`
+
 Traceroute sends packets Time to Live (TTL) equal to the number of hops. Routers decrease the value of TTL for incoming packets. If a packet's TTL = 0 then the router drops it and may send back diagnostic information to the source about the router's identity. Otherwise the router continues forwarding the packet.
 
     Traceroute provides a detailed view of the routers that a packet traverses while on its way to a destination.
@@ -251,40 +254,48 @@ Traceroute sends packets Time to Live (TTL) equal to the number of hops. Routers
     If router does not respond within a timeout then traceroute prints an asterisk.
 
 4. `arp`
+
 Provides info on and the ability to manipulate the ARP cache of the system.
 
     With arp you can display the system arp table.  Add, remove, or modify arp entries and much more.
     
 5. `dig`
+
 Utility for doing dns query and triaging DNS issues.
 
     Dig by default performs queries to nameservers in `/etc/resolv.conf` but some options allow you to: specify name server, choose query type (iterative vs recursive), and much more -- making `dig` a very flexible DNS tool.
     
 6. `ip`
+
 `ip` is a command with many subcommands offering a lot of functionality -- so much it can be overwhelming at first. You will most commonly be using ip to display/modify routing, IP addresses, or network interfaces.
 
     It will take time to get use to how much functionality is included in this command but for reference here is a pretty compact [cheatsheet]. A few common use cases include: `ip addr` which displays information on your IP addresses, `ip route` which displays information on your routing table, and `ip link` which displays information about your network interfaces.
 
 7. `netstat`
+
 This tool is good for printing network connections, routing tables, and probing sockets, amongst other functions.
 
     `netstat` also has functionality to probe sockets for activity and displays information such protocol (UDP/TCP)
     
     If you are investigating sockets `ss` and `lsof` are also options you may want to consider
 8. `tcpdump`
+
 Perfect for monitoring incoming or outgoing traffic on a machine. 
 
     `tcpdump` offers countless options when it comes to analyzing traffic: it can capture packets, log traffic, compute metrics, filter traffic, monitor specific interfaces, etc. As a primer you can check out these [examples][tcp].
 
 9. `nc`
+
 Netcat is a very powerful tool that can be used for just about anything involving TCP or UDP.  It can open TCP connections, send UDP packets, listen on arbitrary TCP and UDP ports, do port scanning, and deal with both IPv4 and IPv6.
 
 10. `curl`
+
 cURL does as its name suggests, and allows you to see the contents at certain URLs. Beyond this it's also an extremely powerful program that lets you interact with and inspect servers over several different protocols certain protocols such as HTTP, FTP, etc ... 
 
     Be sure to check out its [documentation][curl] for specific use cases.
 
 11. `wget`
+
 `wget` is quite similar to `curl` in the sense that they are both command line tools designed to transfer data from or to servers with certain protocols and both come with a bunch of features.
 
     There are differences between the commands, two notable examples being that wget is command line only meaning there no library or API.  However, wget has a big advantage of being able to download recursively. You can read a bit more on the two tools [here][curl vs wget].
