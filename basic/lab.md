@@ -28,7 +28,6 @@ Won't talk much about the above two, they aren't as important and are sometimes 
 7. **Application Layer**
 The application layer specifies protocols between hosts.  Some examples of this include SSH, FTP, and HTTP. 
 
-Here is a diagram of the OSI model
 ![alt text][OSI]
 
 [OSI]: https://i-technet.sec.s-msft.com/dynimg/IC213395.gif "OSI model"
