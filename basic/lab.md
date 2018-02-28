@@ -108,10 +108,12 @@ For IP packet 1, a host on the private network with address `192.168.1.3` tries 
 
 But how exactly does the router know which packets to convert to which address? A common procedure is for NAT routers to store a mapping of (`srcIP:srcPort`, `dstIP:dstPort`) so the router knows which machines are trying to communicate with one another and can translate packets that match these saved mappings.
 
+There are a few motivations behind why NAT is a useful mechanism for networks.  Firstly, NAT can be used as a security measure.  Recall in the above example that you could not reach your friend's device since it was on a private network behind the NAT.  Similarly, networks can be intentionally set up so that certain hosts cannot be reached from outside the network.  Additionally, NAT is a means of dealing with a limited availability of public IP addreses.  With NAT multiple hosts can share a public IP adress while on a private network behind a NAT device. As a side note, IPv6 is also a way of dealing with public IP address availability, just another reason to check out the protocol!
+
 ## DNS
 We've gone over IP addresses and how they are means of communicating with a host over IP, but  while IP addresses are machine friendly (computers love numbers) they aren't exactly human friendly. It's hard enough trying to remember phone numbers, memorizing 32 bit IP addresses isn't going to be any easier.
 
-But it's much easier for us to remember names like google, facebook, or coolmath-games.com. So out of this conflict the Domain Name System (DNS) was born as a compromise between machine friendly IP addresses and human friendly domain names.
+But it's much easier for us to remember names like www.google.com, www.facebook.com, or coolmath-games.com. So out of this conflict the Domain Name System (DNS) was born as a compromise between machine friendly IP addresses and human friendly domain names.
 
 DNS is a system that maps a domain name like google.com to `172.217.6.78`. When you query for google.com your computer sends out a DNS query for google.com to a DNS server. Assuming things are properly configured and google.com has a valid corresponding address you will receive a response from an authoritative server that essentially says "google.com has IP address `x.x.x.x`".
 
@@ -241,8 +243,6 @@ A simple and straightforward command that can display information about a host, 
 
     Moreover ping also provides metrics for Round Trip Time (RTT) and packet loss.  Round trip time is defined as the time it takes for a response to arrive after sending the ping packet.  These can prove to be very useful statistics.
 
-[ICMP]: https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol
-
 3. `traceroute`
 Traceroute sends packets Time to Live (TTL) equal to the number of hops. Routers decreases the value of TTL of an incoming packet and if it sees an incoming packet with TTL = 0 then drops it, otherwise it decreases the value and sends it further. At the same time it sends diagnosing information to the source about router's identity.
 
@@ -265,8 +265,6 @@ Utility for doing dns query and triaging DNS issues.
 
     It will take time to get use to how much functionality is included in this command but for reference here is a pretty compact [cheatsheet]. A few common use cases include: `ip addr` which displays information on your IP addresses, `ip route` which displays information on your routing table, and `ip link` which displays information about your network interfaces.
 
-[cheatsheet]: https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf
-
 7. `netstat`
 This tool is good for printing network connections, routing tables, and probing sockets, amongst other functions.
 
@@ -278,8 +276,6 @@ Perfect for monitoring incoming or outgoing traffic on a machine.
 
     `tcpdump` offers countless options when it comes to analyzing traffic: it can capture packets, log traffic, compute metrics, filter traffic, monitor specific interfaces, etc. As a primer you can check out these [examples][tcp].
 
-[tcp]: https://www.rationallyparanoid.com/articles/tcpdump.html
-
 9. `nc`
 Netcat is a very powerful tool that can be used for just about anything involving TCP or UDP.  It can open TCP connections, send UDP packets, listen on arbitrary TCP and UDP ports, do port scanning, and deal with both IPv4 and IPv6.
 
@@ -288,15 +284,16 @@ cURL does as its name suggests, and allows you to see the contents at certain UR
 
     Be sure to check out its [documentation][curl] for specific use cases.
 
-[curl]: https://curl.haxx.se/docs/
-
 11. `wget`
 `wget` is quite similar to `curl` in the sense that they are both command line tools designed to transfer data from or to servers with certain protocols and both come with a bunch of features.
 
     There are differences between the commands, two notable examples being that wget is command line only meaning there no library or API.  However, wget has a big advantage of being able to download recursively. You can read a bit more on the two tools [here][curl vs wget].
 
 [curl vs wget]: https://daniel.haxx.se/docs/curl-vs-wget.html
-
+[ICMP]: https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol
+[curl]: https://curl.haxx.se/docs/
+[tcp]: https://www.rationallyparanoid.com/articles/tcpdump.html
+[cheatsheet]: https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf
 
 # Exercises
 
