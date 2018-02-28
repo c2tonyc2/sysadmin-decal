@@ -309,7 +309,7 @@ cURL does as its name suggests, and allows you to see the contents at certain UR
 
 **Additionally, These questions can also be found on the lab checkoff form located [here][checkoff] so feel free to read them there instead.**
 
-**Furthermore, the supplementary files for this lab can be found [here][files]. You can get a local copy of this repo by running `git clone git@github.com:0xcf/decal-labs.git`. Then go into the corresponding directory for this lab `cd b4`.**
+**Furthermore, the supplementary files for this lab can be found [here][files]. You can get a local copy of this repo by running `git clone git@github.com:0xcf/decal-labs.git`. Then go into the corresponding directory for this lab `cd decal-labs/b5`.**
 
 ## Once Upon a Network
 Let's take a look at all these concepts applied to something we are very familiar with - web browsing.
