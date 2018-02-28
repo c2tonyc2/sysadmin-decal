@@ -55,7 +55,7 @@ For example let's imagine a sender, A, who has MAC `00:DE:AD:BE:EF:00`,  broadca
 If a machine, B, with MAC `12:34:56:78:9a:bc` has the IP address `42.42.42.42` they send a unicast reply back to the sender with the info "`12:34:56:78:9a:bc` has `42.42.42.42`". The sender stores this information in an arp table so whenever it receives packets meant for machine B i.e. a packet with an destination IP address of `42.42.42.42` it sends the packet to MAC it received from B.
 
 ## IP
-IP addresses are means of identifying devices connected to a network under Internet Protocol. There are two versions of the internet protocol, IPv4 and IPv6, that which differ on the size of their addresses. For the sake of time we will only go over IPv4, but IPv6 is certainly gaining ground and worth checking out!
+IP addresses are means of identifying devices connected to a network under Internet Protocol. There are two versions of the internet protocol, IPv4 and IPv6, that which differ on the size of their addresses. An example IPv6 address is `2001:0db8:85a3:0000:0000:8a2e:0370:7334` which is considerably longer than an IPv4 address like `127.0.0.1`.  For the sake of time we will only go over IPv4, but IPv6 is certainly gaining ground and worth checking out!
 
 IPv4 addresses are 32 bits, i.e. 4 bytes, long and are delimited by a dot (.) every byte. An example IPv4 address is `127.0.0.1`. Coincidentally this address is known as the loopback address which maps to the loopback interface on your own machine. This allows network applications to communicate with one another if they are running on the same machine, in this case your machine. But why `127.0.0.1` and not `127.0.0.0` or `127.0.0.2`?
 
@@ -82,8 +82,8 @@ default via 10.0.2.2 dev eth0
 192.168.162.0/24 dev eth1  proto kernel  scope link  src 192.168.162.162
 ```
 A packet destined for `8.8.8.8` would be forwarded out eth0, the default gateway.
-A packet destined for `10.0.2.1` would be forwarded according to second entry, out of eth0.
-A packet destined for `10.0.2.254` would be forwarded according to third entry, out of eth0.
+A packet destined for `10.0.2.1` would be forwarded according to the second entry, out of eth0.
+A packet destined for `10.0.2.254` would be forwarded according to the third entry, out of eth0.
 A packet destined for `192.168.162.254` would be forwarded according to the fourth entry, out of eth1.
 
 ## Private IP addresses and NAT
@@ -99,7 +99,6 @@ This is because `192.168.0.0/16` is a private network block. [Certain blocks][pr
 
 Network address translation or (NAT) is a procedure by which an IP address is mapped into another network address during routing. For example we could map a private IP address to a public one in order to allow a device on the local private network to communicate with cat picture servers out in the wilds of the web.
 
-Take a look at this diagram
 ![alt text][NAT]
 
 [NAT]: http://www.h3c.com.hk/res/201212/03/20121203_1477660_image002_765254_1285_0.png "NAT addressing"
