@@ -5,13 +5,21 @@ import subprocess
 
 """
 Scenario Overview:
-We are going to tank their interface configurations by flushing all addresses on their interface.  Sadly, thanks to ISC dhclient using raw sockets I can't use iptables to just firewall off the vagrant/virtualbox DHCP server.
+We are going to tank their interface configurations by flushing all addresses
+on their interface.  Sadly, thanks to ISC dhclient using raw sockets I can't
+use iptables to just firewall off the vagrant/virtualbox DHCP server.
 
 Triage:
-Student should use a device reporting command like `ip a` to see that their device has improper configurations then investigate.  Additionally, they should notice that I have removed dhcp configuration from their default interface.
+Student should use a device reporting command like `ip a` to see that their
+device has improper configurations then investigate.  Additionally, they should
+notice that I have removed dhcp configuration from their default interface.
 
 Solution:
-Student should either manually add the addresses for the interface back to the device via `ip addr` or even better leave that job up to DHCP by just reloading the interface.  Sadly I can't tank their DHCP server, so instead they simply have to just change their interface file back to normal to use the latter solution.
+Student should either manually add the addresses for the interface back to the
+device via `ip addr` or even better leave that job up to DHCP by just reloading
+the interface.  Sadly I can't tank their DHCP server, so instead they simply
+have to just change their interface file back to normal to use the latter
+solution.
 """
 INTERFACES_FILE = "/etc/network/interfaces"
 
@@ -26,4 +34,3 @@ subprocess.run(split(command))
 # Reload stripped interface
 command = "ip addr flush {iface}".format(iface=default_iface)
 subprocess.run(split(command))
-
