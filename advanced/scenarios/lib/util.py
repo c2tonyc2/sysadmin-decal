@@ -1,5 +1,9 @@
 import socket, struct, fcntl
 from collections import namedtuple
+import subprocess
+from shlex import split
+
+
 ROUTE = "/proc/net/route"
 
 RoutingEntry = namedtuple(
@@ -37,3 +41,12 @@ def get_iface_ip_address(iface):
 
 def hex2address(val):
     return socket.inet_ntoa(struct.pack("<L", int(val, 16)))
+
+def run(command):
+    args = split(command)
+    return subprocess.run(
+        args,
+        stdout=subprocess.DEVNULL, 
+        stderr=subprocess.STDOUT
+    )
+

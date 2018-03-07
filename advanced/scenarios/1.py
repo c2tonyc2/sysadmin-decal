@@ -1,6 +1,4 @@
-from shlex import split
 import lib.util as util
-import subprocess
 
 """
 Scenario Overview:
@@ -21,12 +19,11 @@ before tanking their system. For example: on my virtual machine I would run
 "ip route add default via 10.0.2.2"
 """
 
-command = "ip link set dev {iface} {status}"
+command = "ifdown {iface}"
 routing_entries = util.get_default_routing_information()
 default_entry = next(
     (e for e in routing_entries if util.is_default_gateway(e)),
     None
 )
 
-args = split(command.format(iface=default_entry.iface, status="down"))
-subprocess.run(args)
+util.run(command.format(iface=default_entry.iface))
