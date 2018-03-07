@@ -1,6 +1,4 @@
-from shlex import split
 import lib.util as util
-import subprocess
 
 
 """
@@ -29,8 +27,8 @@ default_iface = default_entry.iface
 
 # Strip interfaces of configuration
 command = "sed -i 's/dhcp/manual/g' {iface_file}".format(iface_file=INTERFACES_FILE)
-subprocess.run(split(command))
+util.run(command)
 
 # Reload stripped interface
 command = "ip addr flush {iface}".format(iface=default_iface)
-subprocess.run(split(command))
+util.run(command)

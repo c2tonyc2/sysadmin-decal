@@ -1,6 +1,5 @@
-from shlex import split
 import lib.util as util
-import subprocess
+
 
 """
 Scenario Overview:
@@ -34,11 +33,11 @@ default_iface_entry = next(
 
 # Kill their default gateway routing rule
 command = "ip route delete default"
-subprocess.run(split(command))
+util.run(command)
 
 # Add a dummy entry
 command = "ip route add default via {gateway}".format(
     gateway=util.get_iface_ip_address(default_iface_entry.iface)
 )
 
-subprocess.run(split(command))
+util.run(command)

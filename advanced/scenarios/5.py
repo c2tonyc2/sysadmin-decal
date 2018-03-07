@@ -1,6 +1,4 @@
-from shlex import split
 import lib.util as util
-import subprocess
 from shutil import copyfile
 
 
@@ -58,6 +56,6 @@ with open(RESOLV_FILE, "r+") as resolv_file:
 
 # Restart dnsmasq server
 command = "killall -9 dnsmasq"
-subprocess.run(split(command))
+util.run(command)
 command = "dnsmasq"
-subprocess.run(split(command))
+util.run(command)

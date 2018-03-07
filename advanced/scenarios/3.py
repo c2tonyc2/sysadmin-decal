@@ -1,6 +1,4 @@
-from shlex import split
 import lib.util as util
-import subprocess
 
 """
 Scenario Overview:
