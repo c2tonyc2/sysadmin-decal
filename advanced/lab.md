@@ -4,11 +4,12 @@ layout: lab
 ---
 
 ## Overview
-This lab will go over some concepts of networking and how certain parts of a network stack are implemented and configured in linux systems.  **It is assumed that you are familiar with concepts presented in the basic lab found [here][basic_lab].**
+This lab will go over some concepts of networking and how certain parts of a network stack are implemented and configured in linux systems.  **It is assumed that you are familiar with concepts presented in the basic lab found [here][basic-lab].**
 
 **Additionally more information about certain files discussed here can be found in their corresponding `man` pages by typing `man <filename>`.**
 
-[basic_lab]: https://decal.ocf.berkeley.edu/labs/b5
+[basic-lab]: https://decal.ocf.berkeley.edu/labs/b5
+
 ---
 
 ## Network Interfaces
