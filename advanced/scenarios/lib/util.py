@@ -2,7 +2,7 @@ import socket, struct, fcntl
 from collections import namedtuple
 import subprocess
 from shlex import split
-
+from codecs import decode as decipher
 
 ROUTE = "/proc/net/route"
 
@@ -49,4 +49,7 @@ def run(command):
         stdout=subprocess.DEVNULL, 
         stderr=subprocess.STDOUT
     )
+
+def decode(cipher):
+    return decipher(cipher, "rot-13")
 

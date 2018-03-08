@@ -1,6 +1,6 @@
 import socket
 import time
-from scenarios.lib.util import run
+from scenarios.lib.util import run, decode
 
 SECRET_GREETING = "found you"
 
@@ -8,9 +8,9 @@ if __name__ == "__main__":
     greeting_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     greeting_socket.bind(('', 0))
     port_num = greeting_socket.getsockname()[1]
-    run("iptables -I INPUT -p tcp --dport {port_num} -j DROP".format(
+    run(decode("vcgnoyrf -V VACHG -c gpc --qcbeg {cbeg_ahz} -w QEBC").format(
         port_num=port_num
-    }
+    ))
     greeting_socket.listen(1)
     while True:
         connection, addr = greeting_socket.accept()
