@@ -282,6 +282,10 @@ In favor of not reinventing the wheel please check out these excellent and prett
 [delet]: https://www.digitalocean.com/community/tutorials/how-to-list-and-delete-iptables-firewall-rules
 [tips]: https://www.digitalocean.com/community/tutorials/iptables-essentials-common-firewall-rules-and-commands
 
+# Exercises
+**Checkoff form can be found [here][checkoff].  Please read the sections below as well, there are instructions for setting up your environment.**
+
+[checkoff]: https://goo.gl/forms/OCxyAu1otMn91Oa13
 
 ## Riddle Me This
 1. Is the result of running `ping` enough to determine whether or not you can reach a server, i.e. if you can ping a server you can reach a server and vice versa.  Justify.
