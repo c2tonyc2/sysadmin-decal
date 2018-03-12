@@ -20,21 +20,17 @@ have to just change their interface file back to normal to use the latter
 solution.
 """
 INTERFACES_FILE = "/etc/network/interfaces"
-NEW_IFACE_CONFIG = "iface {iface} manual"
 
 routing_entries = util.get_default_routing_information()
 default_entry = next((e for e in routing_entries if util.is_default_gateway(e)), None)
 default_iface = default_entry.iface
 
 # Strip interfaces of configuration
-#command = "sed -i 's/dhcp/manual/g' {iface_file}".format(iface_file=INTERFACES_FILE)
-#util.run(command)
-
 lines = []
 with open(INTERFACES_FILE, "r+") as iface_file:
     for line in iface_file:
         if default_iface in line and "dhcp" in line:
-            lines.append(NEW_IFACE_CONFIG.format(iface=default_iface))
+            lines.append(line.replace("dhcp", "manual"))
         else:
             lines.append(line)
     iface_file.seek(0, 0)
