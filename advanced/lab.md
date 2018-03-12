@@ -323,9 +323,9 @@ Each script **might** make changes to your network stack with the intent of dama
     2. If you concluded there was a problem, resolve the issue.  What commands did you use and how did you conclude things were fully functional again?
 
    **Additionally, for each step you must explain the tools you used and how you came to your  conclusions i.e.** 
-> I ran `example --pls --fix computer` and I noticed that line 3: `computer-is-broken` meant my machine was f*****.
+    > I ran `example --pls --fix computer` and I noticed that line 3: `computer-is-broken` meant my machine was f*****.
 
-> This script damaged my ability to connect to google.com by poisoning my arp cache with bogus entries.
+    > This script damaged my ability to connect to google.com by poisoning my arp cache with bogus entries.
 
 [decal-labs]: https://github.com/0xcf/decal-labs
 [vagrant-download]: https://www.vagrantup.com/downloads.html
